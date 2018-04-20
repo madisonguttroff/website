@@ -1,0 +1,4432 @@
+Last login: Thu Apr 12 15:05:22 on console
+grc-egypt:~ mguttrof$ git help
+usage: git [--version] [--help] [-C <path>] [-c name=value]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone      Clone a repository into a new directory
+   init       Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add        Add file contents to the index
+   mv         Move or rename a file, a directory, or a symlink
+   reset      Reset current HEAD to the specified state
+   rm         Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect     Use binary search to find the commit that introduced a bug
+   grep       Print lines matching a pattern
+   log        Show commit logs
+   show       Show various types of objects
+   status     Show the working tree status
+
+grow, mark and tweak your common history
+   branch     List, create, or delete branches
+   checkout   Switch branches or restore working tree files
+   commit     Record changes to the repository
+   diff       Show changes between commits, commit and working tree, etc
+   merge      Join two or more development histories together
+   rebase     Reapply commits on top of another base tip
+   tag        Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch      Download objects and refs from another repository
+   pull       Fetch from and integrate with another repository or a local branch
+   push       Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+grc-egypt:~ mguttrof$ clear
+
+grc-egypt:~ mguttrof$ which git
+/usr/bin/git
+grc-egypt:~ mguttrof$ git config --global user.name "Madison Guttroff"
+grc-egypt:~ mguttrof$ git config --global user.email madisonguttroff@gmail.com
+grc-egypt:~ mguttrof$ git help
+usage: git [--version] [--help] [-C <path>] [-c name=value]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone      Clone a repository into a new directory
+   init       Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add        Add file contents to the index
+   mv         Move or rename a file, a directory, or a symlink
+   reset      Reset current HEAD to the specified state
+   rm         Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect     Use binary search to find the commit that introduced a bug
+   grep       Print lines matching a pattern
+   log        Show commit logs
+   show       Show various types of objects
+   status     Show the working tree status
+
+grow, mark and tweak your common history
+   branch     List, create, or delete branches
+   checkout   Switch branches or restore working tree files
+   commit     Record changes to the repository
+   diff       Show changes between commits, commit and working tree, etc
+   merge      Join two or more development histories together
+   rebase     Reapply commits on top of another base tip
+   tag        Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch      Download objects and refs from another repository
+   pull       Fetch from and integrate with another repository or a local branch
+   push       Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+grc-egypt:~ mguttrof$ ~/ .gitconfig
+-bash: /Users/mguttrof/: is a directory
+grc-egypt:~ mguttrof$ mkdir -p repos/website
+grc-egypt:~ mguttrof$ cd repos/website/
+grc-egypt:website mguttrof$ git init
+Initialized empty Git repository in /Users/mguttrof/repos/website/.git/
+grc-egypt:website mguttrof$ ls -a
+.	..	.git
+grc-egypt:website mguttrof$ ls
+grc-egypt:website mguttrof$ cat
+^C
+grc-egypt:website mguttrof$ touch index.html
+grc-egypt:website mguttrof$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	index.html
+
+nothing added to commit but untracked files present (use "git add" to track)
+grc-egypt:website mguttrof$ git add -A
+grc-egypt:website mguttrof$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   index.html
+
+grc-egypt:website mguttrof$ git commit -m "Initialize repository"
+[master (root-commit) b73fd33] Initialize repository
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 index.html
+grc-egypt:website mguttrof$ git log
+commit b73fd3398642235dbb9821059e6c10911e98d886 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+grc-egypt:website mguttrof$ git commit -m
+error: switch `m' requires a value
+usage: git commit [<options>] [--] <pathspec>...
+
+    -q, --quiet           suppress summary after successful commit
+    -v, --verbose         show diff in commit message template
+
+Commit message options
+    -F, --file <file>     read message from file
+    --author <author>     override author for commit
+    --date <date>         override date for commit
+    -m, --message <message>
+                          commit message
+    -c, --reedit-message <commit>
+                          reuse and edit message from specified commit
+    -C, --reuse-message <commit>
+                          reuse message from specified commit
+    --fixup <commit>      use autosquash formatted message to fixup specified commit
+    --squash <commit>     use autosquash formatted message to squash specified commit
+    --reset-author        the commit is authored by me now (used with -C/-c/--amend)
+    -s, --signoff         add Signed-off-by:
+    -t, --template <file>
+                          use specified template file
+    -e, --edit            force edit of commit
+    --cleanup <default>   how to strip spaces and #comments from message
+    --status              include status in commit message template
+    -S, --gpg-sign[=<key-id>]
+                          GPG sign commit
+
+Commit contents options
+    -a, --all             commit all changed files
+    -i, --include         add specified files to index for commit
+    --interactive         interactively add files
+    -p, --patch           interactively add changes
+    -o, --only            commit only specified files
+    -n, --no-verify       bypass pre-commit and commit-msg hooks
+    --dry-run             show what would be committed
+    --short               show status concisely
+    --branch              show branch information
+    --porcelain           machine-readable output
+    --long                show status in long format (default)
+    -z, --null            terminate entries with NUL
+    --amend               amend previous commit
+    --no-post-rewrite     bypass post-rewrite hook
+    -u, --untracked-files[=<mode>]
+                          show untracked files, optional modes: all, normal, no. (Default: all)
+
+grc-egypt:website mguttrof$ echo "hello, wold" > index.html
+grc-egypt:website mguttrof$ git diff
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+grc-egypt:website mguttrof$ git commit -a -m "Add content to index.html"
+[master 68c2648] Add content to index.html
+ 1 file changed, 1 insertion(+)
+grc-egypt:website mguttrof$ git log
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+grc-egypt:website mguttrof$ git add -A -m "Add bazz"
+error: unknown switch `m'
+usage: git add [<options>] [--] <pathspec>...
+
+    -n, --dry-run         dry run
+    -v, --verbose         be verbose
+
+    -i, --interactive     interactive picking
+    -p, --patch           select hunks interactively
+    -e, --edit            edit current diff and apply
+    -f, --force           allow adding otherwise ignored files
+    -u, --update          update tracked files
+    -N, --intent-to-add   record only the fact that the path will be added later
+    -A, --all             add changes from all tracked and untracked files
+    --ignore-removal      ignore paths removed in the working tree (same as --no-all)
+    --refresh             don't add, only refresh the index
+    --ignore-errors       just skip files which cannot be added because of errors
+    --ignore-missing      check if - even missing - files are ignored in dry run
+    --chmod <(+/-)x>      override the executable bit of the listed files
+
+grc-egypt:website mguttrof$ git add -A -m "Add baz"
+error: unknown switch `m'
+usage: git add [<options>] [--] <pathspec>...
+
+    -n, --dry-run         dry run
+    -v, --verbose         be verbose
+
+    -i, --interactive     interactive picking
+    -p, --patch           select hunks interactively
+    -e, --edit            edit current diff and apply
+    -f, --force           allow adding otherwise ignored files
+    -u, --update          update tracked files
+    -N, --intent-to-add   record only the fact that the path will be added later
+    -A, --all             add changes from all tracked and untracked files
+    --ignore-removal      ignore paths removed in the working tree (same as --no-all)
+    --refresh             don't add, only refresh the index
+    --ignore-errors       just skip files which cannot be added because of errors
+    --ignore-missing      check if - even missing - files are ignored in dry run
+    --chmod <(+/-)x>      override the executable bit of the listed files
+
+grc-egypt:website mguttrof$ git add -A
+grc-egypt:website mguttrof$ git commit -m "baz"
+On branch master
+nothing to commit, working tree clean
+grc-egypt:website mguttrof$ git log
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+grc-egypt:website mguttrof$ git status
+On branch master
+nothing to commit, working tree clean
+grc-egypt:website mguttrof$ touch baz
+grc-egypt:website mguttrof$ git commit -am "Add baz"
+On branch master
+Untracked files:
+	baz
+
+nothing added to commit but untracked files present
+grc-egypt:website mguttrof$ git add -A
+grc-egypt:website mguttrof$ git commit -m "Add baz"
+[master 1f9b688] Add baz
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 baz
+grc-egypt:website mguttrof$ git add -A
+grc-egypt:website mguttrof$ git log
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+grc-egypt:website mguttrof$ got status
+-bash: got: command not found
+grc-egypt:website mguttrof$ git status
+On branch master
+nothing to commit, working tree clean
+grc-egypt:website mguttrof$ git addd -A
+git: 'addd' is not a git command. See 'git --help'.
+
+The most similar command is
+	add
+grc-egypt:website mguttrof$ git add -A
+grc-egypt:website mguttrof$ atom index.html
+grc-egypt:website mguttrof$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   index.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+grc-egypt:website mguttrof$ git diff
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+grc-egypt:website mguttrof$ git commit -am "Add an h1 tag"
+[master dc8ab5a] Add an h1 tag
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+grc-egypt:website mguttrof$ git log -p
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+...skipping...
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+:...skipping...
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+:...skipping...
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+:...skipping...
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+:...skipping...
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+:...skipping...
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+:...skipping...
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+:...skipping...
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+:...skipping...
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+:...skipping...
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
+:...skipping...
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+:...skipping...
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
+:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
+:...skipping...
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+:...skipping...
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+:...skipping...
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+:...skipping...
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+:...skipping...
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+:...skipping...
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+:...skipping...
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+:...skipping...
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+commit dc8ab5a9b60f847e4095919aeea269820e079a20 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+grc-egypt:website mguttrof$ git diff
+diff --git a/index.html b/index.html
+index 4b5fa63..335356e 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1,10 @@
+-hello, world
++<!DOCTYPE html>
++<html>
++<head>
++  <title></title>
++</head>
++<body>
++<h1>hello, world</h1>
++<p>Callme Ishmael</p>
++</body>
++</html>
+grc-egypt:website mguttrof$ git commit -am "Add some HTML structure"
+[master 272e691] Add some HTML structure
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+grc-egypt:website mguttrof$ git commit -am "add title"
+On branch master
+nothing to commit, working tree clean
+grc-egypt:website mguttrof$ git log -p
+commit 272e69144e6292b56e6adcad0ba90788f3fdfc41 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+commit 272e69144e6292b56e6adcad0ba90788f3fdfc41 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:17:42 2018 -0700
+
+    Add some HTML structure
+
+diff --git a/index.html b/index.html
+index 4b5fa63..335356e 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1,10 @@
+-hello, world
++<!DOCTYPE html>
++<html>
++<head>
++  <title></title>
++</head>
++<body>
++<h1>hello, world</h1>
++<p>Callme Ishmael</p>
++</body>
++</html>
+
+commit 272e69144e6292b56e6adcad0ba90788f3fdfc41 (HEAD -> master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:17:42 2018 -0700
+
+    Add some HTML structure
+
+diff --git a/index.html b/index.html
+index 4b5fa63..335356e 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1,10 @@
+-hello, world
++<!DOCTYPE html>
++<html>
++<head>
++  <title></title>
++</head>
++<body>
++<h1>hello, world</h1>
++<p>Callme Ishmael</p>
++</body>
++</html>
+
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+~
+(END)
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+diff --git a/index.html b/index.html
+index f959169..4b5fa63 100644
+--- a/index.html
++++ b/index.html
+@@ -1 +1 @@
+-hello, wold
++hello, world
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+diff --git a/baz b/baz
+new file mode 100644
+index 0000000..e69de29
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+diff --git a/index.html b/index.html
+index e69de29..f959169 100644
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++hello, wold
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..e69de29
+~
+~
+grc-egypt:website mguttrof$ git remote add origin https://github.com/madisonguttroff/website.git
+grc-egypt:website mguttrof$ git push -u origin master
+Username for 'https://github.com': madisonguttroff
+Password for 'https://madisonguttroff@github.com': 
+Counting objects: 14, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (14/14), 1.28 KiB | 1.28 MiB/s, done.
+Total 14 (delta 0), reused 0 (delta 0)
+To https://github.com/madisonguttroff/website.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
+grc-egypt:website mguttrof$ git log
+commit 272e69144e6292b56e6adcad0ba90788f3fdfc41 (HEAD -> master, origin/master)
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:17:42 2018 -0700
+
+    Add some HTML structure
+
+commit dc8ab5a9b60f847e4095919aeea269820e079a20
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 17:10:07 2018 -0700
+
+    Add an h1 tag
+
+commit 1f9b6882f0853073729d27967eed0c16bbdea8f4
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:54:37 2018 -0700
+
+    Add baz
+
+commit 68c2648dd3e5fc1ff07b451a8d1a138ce295e622
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:21:58 2018 -0700
+
+    Add content to index.html
+
+commit b73fd3398642235dbb9821059e6c10911e98d886
+Author: Madison Guttroff <madisonguttroff@gmail.com>
+Date:   Thu Apr 12 16:13:38 2018 -0700
+
+    Initialize repository
+grc-egypt:website mguttrof$ atom README.md
+grc-egypt:website mguttrof$ git add -A
+grc-egypt:website mguttrof$ git commit -m "Add REAME file"
+[master ee32c3f] Add REAME file
+ 2 files changed, 15 insertions(+), 2 deletions(-)
+ create mode 100644 README.md
+grc-egypt:website mguttrof$ git push
+Counting objects: 4, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 759 bytes | 759.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/madisonguttroff/website.git
+   272e691..ee32c3f  master -> master
+grc-egypt:website mguttrof$ git commit -Am "added documentation"
+error: unknown switch `A'
+usage: git commit [<options>] [--] <pathspec>...
+
+    -q, --quiet           suppress summary after successful commit
+    -v, --verbose         show diff in commit message template
+
+Commit message options
+    -F, --file <file>     read message from file
+    --author <author>     override author for commit
+    --date <date>         override date for commit
+    -m, --message <message>
+                          commit message
+    -c, --reedit-message <commit>
+                          reuse and edit message from specified commit
+    -C, --reuse-message <commit>
+                          reuse message from specified commit
+    --fixup <commit>      use autosquash formatted message to fixup specified commit
+    --squash <commit>     use autosquash formatted message to squash specified commit
+    --reset-author        the commit is authored by me now (used with -C/-c/--amend)
+    -s, --signoff         add Signed-off-by:
+    -t, --template <file>
+                          use specified template file
+    -e, --edit            force edit of commit
+    --cleanup <default>   how to strip spaces and #comments from message
+    --status              include status in commit message template
+    -S, --gpg-sign[=<key-id>]
+                          GPG sign commit
+
+Commit contents options
+    -a, --all             commit all changed files
+    -i, --include         add specified files to index for commit
+    --interactive         interactively add files
+    -p, --patch           interactively add changes
+    -o, --only            commit only specified files
+    -n, --no-verify       bypass pre-commit and commit-msg hooks
+    --dry-run             show what would be committed
+    --short               show status concisely
+    --branch              show branch information
+    --porcelain           machine-readable output
+    --long                show status in long format (default)
+    -z, --null            terminate entries with NUL
+    --amend               amend previous commit
+    --no-post-rewrite     bypass post-rewrite hook
+    -u, --untracked-files[=<mode>]
+                          show untracked files, optional modes: all, normal, no. (Default: all)
+
+grc-egypt:website mguttrof$ git commit -am "added documentation"
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+nothing to commit, working tree clean
+grc-egypt:website mguttrof$ 
